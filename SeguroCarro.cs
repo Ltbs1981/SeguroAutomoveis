@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace SeguroAutomoveis
 {
-    internal class SeguroCarro
+    public class SeguroCarro: Seguro
     {
+
+        public double PremioCarro { get; set; }
+
+        public SeguroCarro(string marcaVeiculo, string anoVeiculo, double valorVeiculo, double franquia, int duracaoEmAnos)
+            : base(marcaVeiculo, anoVeiculo, valorVeiculo, franquia, duracaoEmAnos)
+        {
+            PremioCarro = 0.05;
+        }
+
+        public override double ValorSeguro()
+        {
+            return ValorVeiculo * 0.02 + Franquia + PremioCarro;
+        }
     }
 }
